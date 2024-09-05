@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          String    @id @default(uuid()) @db.VarChar(36)
+  title       String    @db.VarChar(255)
+  description String?   @db.Text
+  Product     Product[]
+}
+
+model ProductImage {
+  id        String   @id @default(uuid()) @db.VarChar(36)
+  image     String   @db.LongText
+  alt       String?  @db.VarChar(255)
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+}
+
+model ProductAdvantage {
+  id        String   @id @default(uuid()) @db.VarChar(36)
+  title     String   @db.VarChar(255)
+  advantage String   @db.Text
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+}
+
+model ProductDocument {
+  id            String   @id @default(uuid()) @db.VarChar(36)
+  documentTitle String   @db.Text
+  documentLink  String   @db.Text
+  Product       Product? @relation(fields: [productId], references: [id])
+  productId     String?
+}
+
+model UseGuideDocument {
+  id                    String   @id @default(uuid()) @db.VarChar(36)
+  useGuideDocumentTitle String   @db.Text
+  useGuideDocumentLink  String   @db.Text
+  Product               Product? @relation(fields: [productId], references: [id])
+  productId             String?
+}
+
+model FAQ {
+  id        String   @id @default(uuid()) @db.VarChar(36)
+  ask       String   @db.Text
+  answer    String   @db.Text
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId String?
+}
+
+model Product {
+  id                 String             @id @default(uuid()) @db.VarChar(36)
+  title              String             @db.VarChar(255)
+  category           Category           @relation(fields: [categoryId], references: [id])
+  categoryId         String
+  description        String?            @db.Text
+  thumbImage         String?            @db.LongText
+  manufacturer       String?            @db.VarChar(255)
+  images             ProductImage[]
+  advantages         ProductAdvantage[]
+  documents          ProductDocument[]
+  faq                FAQ[]
+  createdAt          DateTime           @default(now()) @db.Timestamp(6)
+  updatedAt          DateTime?          @updatedAt @db.Timestamp(6)
+  useGuideVideoTitle String?            @db.Text
+  useGuideVideoLink  String?            @db.Text
+  useGuideDocument   UseGuideDocument[]
+}
+
+model Article {
+  id         String    @id @default(uuid()) @db.VarChar(36)
+  title      String    @db.Text
+  content    String    @db.Text
+  author     String    @db.VarChar(255)
+  thumbImage String    @db.Text
+  createdAt  DateTime  @default(now()) @db.Timestamp(6)
+  createdBy  String    @db.VarChar(255)
+  updatedAt  DateTime? @updatedAt @db.Timestamp(6)
+  updatedBy  String?   @db.VarChar(255)
+}
+
+model User {
+  id       String  @id @default(uuid()) @db.VarChar(36)
+  avatar   String? @db.Text
+  name     String? @db.VarChar(255)
+  userName String  @db.VarChar(255)
+  password String  @db.Text
+  role     Role    @default(EDITOR)
+}
+
+model ContactRecord {
+  id      String   @id @default(uuid()) @db.VarChar(36)
+  name    String   @db.VarChar(255)
+  email   String   @db.VarChar(255)
+  phone   String   @db.VarChar(15)
+  company String?  @db.VarChar(255)
+  message String   @db.Text
+  sentAt  DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
