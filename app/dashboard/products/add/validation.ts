@@ -1,50 +1,61 @@
 import {z} from "zod";
 
-export const ProductImageSchema = z.object({
-    image: z.string(),
-    alt: z.string().optional(),
-    productId: z.string().optional(),
-}).optional();
-
-
-export const ProductAdvantageSchema = z.object({
-    title: z.string().max(255),
-    advantage: z.string(),
-    productId: z.string().optional(),
-}).optional();
-
-
-export const ProductDocumentSchema = z.object({
-    documentTitle: z.string(),
-    documentLink: z.string(),
-    productId: z.string().optional(),
-}).optional();
-
-
-export const FAQSchema = z.object({
-    ask: z.string(),
-    answer: z.string(),
-    productId: z.string().optional(),
-}).optional();
-
-export const UseGuideDocumentSchema = z.object({
-    useGuideDocumentTitle: z.string(),
-    useGuideDocumentLink: z.string(),
-    productId: z.string().optional(),
-}).optional();
-
-
 export const ProductSchema = z.object({
     title: z.string().min(1).max(255),
     categoryId: z.string(),
-    description: z.string().min(1).optional(),
+    description: z.string().min(1).max(255),
     thumbImage: z.string().optional(),
     manufacturer: z.string().min(1).optional(),
-    images: z.array(ProductImageSchema).optional(),
-    advantages: z.array(ProductAdvantageSchema).optional(),
-    documents: z.array(ProductDocumentSchema).optional(),
-    faq: z.array(FAQSchema).optional(),
+    image1: z.string().optional(),
+    alt1: z.string().min(1).max(255).optional(),
+    image2: z.string().optional(),
+    alt2: z.string().min(1).max(255).optional(),
+    image3: z.string().optional(),
+    alt3: z.string().min(1).max(255).optional(),
+    image4: z.string().optional(),
+    alt4: z.string().min(1).max(255).optional(),
+    image5: z.string().optional(),
+    alt5: z.string().min(1).max(255).optional(),
+    image6: z.string().optional(),
+    alt6: z.string().min(1).max(255).optional(),
+    image7: z.string().optional(),
+    alt7: z.string().min(1).max(255).optional(),
+    image8: z.string().optional(),
+    alt8: z.string().min(1).max(255).optional(),
+    image9: z.string().optional(),
+    alt9: z.string().min(1).max(255).optional(),
+    advantage1: z.string().optional(),
+    advantage2: z.string().optional(),
+    advantage3: z.string().optional(),
+    advantage4: z.string().optional(),
+    advantage5: z.string().optional(),
+    advantage6: z.string().optional(),
+    documentTitle1: z.string().optional(),
+    documentLink1: z.string().optional(),
+    documentTitle2: z.string().optional(),
+    documentLink2: z.string().optional(),
+    documentTitle3: z.string().optional(),
+    documentLink3: z.string().optional(),
     useGuideVideoTitle: z.string().optional(),
     useGuideVideoLink: z.string().optional(),
-    useGuideDocument: z.array(UseGuideDocumentSchema).optional(),
+    useGuideDocumentTitle: z.string().optional(),
+    useGuideDocumentLink: z.string().optional(),
+    ask1: z.string().optional(),
+    answer1: z.string().optional(),
+    ask2: z.string().optional(),
+    answer2: z.string().optional(),
+    ask3: z.string().optional(),
+    answer3: z.string().optional(),
+    ask4: z.string().optional(),
+    answer4: z.string().optional(),
+    ask5: z.string().optional(),
+    answer5: z.string().optional(),
+    ask6: z.string().optional(),
+    answer6: z.string().optional(),
+    ask7: z.string().optional(),
+    answer7: z.string().optional(),
+    ask8: z.string().optional(),
+    answer8: z.string().optional(),
+    ask9: z.string().optional(),
+    answer9: z.string().optional(),
 });

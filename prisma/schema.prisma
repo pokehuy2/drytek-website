@@ -20,63 +20,68 @@ model Category {
   Product     Product[]
 }
 
-model ProductImage {
-  id        String   @id @default(uuid()) @db.VarChar(36)
-  image     String   @db.LongText
-  alt       String?  @db.VarChar(255)
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId String?
-}
-
-model ProductAdvantage {
-  id        String   @id @default(uuid()) @db.VarChar(36)
-  title     String   @db.VarChar(255)
-  advantage String   @db.Text
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId String?
-}
-
-model ProductDocument {
-  id            String   @id @default(uuid()) @db.VarChar(36)
-  documentTitle String   @db.Text
-  documentLink  String   @db.Text
-  Product       Product? @relation(fields: [productId], references: [id])
-  productId     String?
-}
-
-model UseGuideDocument {
-  id                    String   @id @default(uuid()) @db.VarChar(36)
-  useGuideDocumentTitle String   @db.Text
-  useGuideDocumentLink  String   @db.Text
-  Product               Product? @relation(fields: [productId], references: [id])
-  productId             String?
-}
-
-model FAQ {
-  id        String   @id @default(uuid()) @db.VarChar(36)
-  ask       String   @db.Text
-  answer    String   @db.Text
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId String?
-}
-
 model Product {
-  id                 String             @id @default(uuid()) @db.VarChar(36)
-  title              String             @db.VarChar(255)
-  category           Category           @relation(fields: [categoryId], references: [id])
-  categoryId         String
-  description        String?            @db.Text
-  thumbImage         String?            @db.LongText
-  manufacturer       String?            @db.VarChar(255)
-  images             ProductImage[]
-  advantages         ProductAdvantage[]
-  documents          ProductDocument[]
-  faq                FAQ[]
-  createdAt          DateTime           @default(now()) @db.Timestamp(6)
-  updatedAt          DateTime?          @updatedAt @db.Timestamp(6)
-  useGuideVideoTitle String?            @db.Text
-  useGuideVideoLink  String?            @db.Text
-  useGuideDocument   UseGuideDocument[]
+  id                    String    @id @default(uuid()) @db.VarChar(36)
+  title                 String    @db.VarChar(255)
+  category              Category  @relation(fields: [categoryId], references: [id])
+  categoryId            String
+  description           String    @db.Text
+  thumbImage            String?   @db.LongText
+  manufacturer          String?   @db.VarChar(255)
+  image1                String?   @db.LongText
+  alt1                  String?   @db.VarChar(255)
+  image2                String?   @db.LongText
+  alt2                  String?   @db.VarChar(255)
+  image3                String?   @db.LongText
+  alt3                  String?   @db.VarChar(255)
+  image4                String?   @db.LongText
+  alt4                  String?   @db.VarChar(255)
+  image5                String?   @db.LongText
+  alt5                  String?   @db.VarChar(255)
+  image6                String?   @db.LongText
+  alt6                  String?   @db.VarChar(255)
+  image7                String?   @db.LongText
+  alt7                  String?   @db.VarChar(255)
+  image8                String?   @db.LongText
+  alt8                  String?   @db.VarChar(255)
+  image9                String?   @db.LongText
+  alt9                  String?   @db.VarChar(255)
+  advantage1            String?   @db.Text
+  advantage2            String?   @db.Text
+  advantage3            String?   @db.Text
+  advantage4            String?   @db.Text
+  advantage5            String?   @db.Text
+  advantage6            String?   @db.Text
+  documentTitle1        String?   @db.Text
+  documentLink1         String?   @db.Text
+  documentTitle2        String?   @db.Text
+  documentLink2         String?   @db.Text
+  documentTitle3        String?   @db.Text
+  documentLink3         String?   @db.Text
+  useGuideDocumentTitle String?   @db.Text
+  useGuideDocumentLink  String?   @db.Text
+  ask1                  String?   @db.Text
+  answer1               String?   @db.Text
+  ask2                  String?   @db.Text
+  answer2               String?   @db.Text
+  ask3                  String?   @db.Text
+  answer3               String?   @db.Text
+  ask4                  String?   @db.Text
+  answer4               String?   @db.Text
+  ask5                  String?   @db.Text
+  answer5               String?   @db.Text
+  ask6                  String?   @db.Text
+  answer6               String?   @db.Text
+  ask7                  String?   @db.Text
+  answer7               String?   @db.Text
+  ask8                  String?   @db.Text
+  answer8               String?   @db.Text
+  ask9                  String?   @db.Text
+  answer9               String?   @db.Text
+  useGuideVideoTitle    String?   @db.Text
+  useGuideVideoLink     String?   @db.Text
+  createdAt             DateTime  @default(now()) @db.Timestamp(6)
+  updatedAt             DateTime? @updatedAt @db.Timestamp(6)
 }
 
 model Article {

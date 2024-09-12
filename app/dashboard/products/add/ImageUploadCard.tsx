@@ -3,7 +3,34 @@ import Image from "next/image";
 import {Dispatch, SetStateAction, useRef} from "react";
 import {Upload} from "lucide-react";
 
-const ImageUploadCard = ({images, setImages} : {images: string[], setImages: Dispatch<SetStateAction<string[]>>}) => {
+type TImages = {
+    thumbImage: string,
+    image1: string,
+    alt1: string,
+    image2: string,
+    alt2: string,
+    image3: string,
+    alt3: string,
+    image4: string,
+    alt4: string,
+    image5: string,
+    alt5: string,
+    image6: string,
+    alt6: string,
+    image7: string,
+    alt7: string,
+    image8: string,
+    alt8: string,
+    image9: string,
+    alt9: string,
+}
+
+type Props = {
+    images: TImages
+    setImages: Dispatch<SetStateAction<TImages>>
+}
+
+const ImageUploadCard = ({images, setImages} : {images: TImages, setImages: Dispatch<SetStateAction<TImages>>}) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const uploadFile = (e: any) => {
         const file = e.currentTarget.files[0];
@@ -12,7 +39,7 @@ const ImageUploadCard = ({images, setImages} : {images: string[], setImages: Dis
             reader.onload = (evt) => {
                 const img = btoa(evt.target?.result?.toString() ?? '');
 
-                setImages(prevState => [...prevState, img]);
+                // setImages(prevState => [...prevState, ...images]);
             };
             reader.readAsDataURL(file);
         }
@@ -34,7 +61,7 @@ const ImageUploadCard = ({images, setImages} : {images: string[], setImages: Dis
                         alt="Product image"
                         className="aspect-square w-full rounded-md object-cover"
                         height="300"
-                        src={(images[0] && atob(images[0])) ?? '/images/placeholder.svg'}
+                        src={(images?.thumbImage && atob(images?.thumbImage)) ?? '/images/placeholder.svg'}
                         width="300"
                     />
                     <div className="grid grid-cols-3 gap-2">
@@ -42,38 +69,72 @@ const ImageUploadCard = ({images, setImages} : {images: string[], setImages: Dis
                             alt="Product image"
                             className="aspect-square w-full rounded-md object-cover"
                             height="84"
-                            src={(images[1] && atob(images[1])) ?? "/images/placeholder.svg"}
+                            src={(images?.image1 && atob(images?.image1)) ?? "/images/placeholder.svg"}
                             width="84"
                         />
                         <Image
                             alt="Product image"
                             className="aspect-square w-full rounded-md object-cover"
                             height="84"
-                            src={(images[2] && atob(images[2])) ?? "/images/placeholder.svg"}
+                            src={(images?.image2 && atob(images?.image3)) ?? "/images/placeholder.svg"}
                             width="84"
                         />
-                        {images[3] &&
+                        {images?.image3 &&
                             <Image
                                 alt="Product image"
                                 className="aspect-square w-full rounded-md object-cover"
                                 height="84"
-                                src={images[3] ? atob(images[3]) : "/images/placeholder.svg"}
+                                src={images?.image3 ? atob(images?.image3) : "/images/placeholder.svg"}
                                 width="84"
                             />}
-                        {images[4] && <Image
-                            alt="Product image"
-                            className="aspect-square w-full rounded-md object-cover"
-                            height="84"
-                            src={images[4] ? atob(images[4]) : "/images/placeholder.svg"}
-                            width="84"
-                        />}
-                        {images[5] && <Image
-                            alt="Product image"
-                            className="aspect-square w-full rounded-md object-cover"
-                            height="84"
-                            src={images[5] ? atob(images[5]) : "/images/placeholder.svg"}
-                            width="84"
-                        />}
+                        {images?.image4 &&
+                            <Image
+                                alt="Product image"
+                                className="aspect-square w-full rounded-md object-cover"
+                                height="84"
+                                src={images?.image4 ? atob(images?.image4) : "/images/placeholder.svg"}
+                                width="84"
+                            />}
+                        {images?.image5 &&
+                            <Image
+                                alt="Product image"
+                                className="aspect-square w-full rounded-md object-cover"
+                                height="84"
+                                src={images?.image5 ? atob(images?.image5) : "/images/placeholder.svg"}
+                                width="84"
+                            />}
+                        {images?.image6 &&
+                            <Image
+                                alt="Product image"
+                                className="aspect-square w-full rounded-md object-cover"
+                                height="84"
+                                src={images?.image6 ? atob(images?.image6) : "/images/placeholder.svg"}
+                                width="84"
+                            />}
+                        {images?.image7 &&
+                            <Image
+                                alt="Product image"
+                                className="aspect-square w-full rounded-md object-cover"
+                                height="84"
+                                src={images?.image7 ? atob(images?.image7) : "/images/placeholder.svg"}
+                                width="84"
+                            />}
+                        {images?.image8 &&
+                            <Image
+                                alt="Product image"
+                                className="aspect-square w-full rounded-md object-cover"
+                                height="84"
+                                src={images?.image8 ? atob(images?.image8) : "/images/placeholder.svg"}
+                                width="84"
+                            />}
+                        {images?.image9 &&
+                            <Image
+                                alt="Product image"
+                                className="aspect-square w-full rounded-md object-cover"
+                                height="84"
+                                src={images?.image9 ? atob(images?.image9) : "/images/placeholder.svg"}
+                                width="84"
+                            />}
                         <input
                             type="file" onChange={uploadFile} ref={inputRef}
                             className="hidden"

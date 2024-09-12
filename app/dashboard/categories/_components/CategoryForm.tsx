@@ -35,7 +35,7 @@ const CategoryForm = ({category}: {category?: Category}) => {
         } catch(error){
             console.log(error)
         }
-    },[])
+    },[category, router])
 
     return (
         <Form {...form}>

@@ -106,7 +106,7 @@ const ProductsPage = async () => {
                                             alt="Product image"
                                             className="aspect-square rounded-md object-cover"
                                             height="64"
-                                            src={atob(product.thumbImage ?? '') ?? 'https://absortech.com/wp-content/uploads/2021/11/absorgel-hanging_container-desiccant.jpg'}
+                                            src={product.thumbImage ? atob(product.thumbImage) : "/images/placeholder.svg"}
                                             width="64"
                                         />
                                     </TableCell>

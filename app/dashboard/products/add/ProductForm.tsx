@@ -14,39 +14,110 @@ import {ProductSchema} from "@/app/dashboard/products/add/validation";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {memo, useCallback, useState} from "react";
 import {useRouter} from "next/navigation";
-import {Product, ProductImage} from "@prisma/client";
+import {Product} from "@prisma/client";
 
 type TProductSchema = z.infer<typeof ProductSchema>;
 
 interface AddFormProps {
     categories: { id: string, title: string, description: string | null }[];
     product?: Product
-    productImages?: ProductImage[]
 }
 
-const ProductForm = ({categories, product, productImages} : AddFormProps) => {
+type TImages = {
+    thumbImage: string,
+    image1: string,
+    alt1: string,
+    image2: string,
+    alt2: string,
+    image3: string,
+    alt3: string,
+    image4: string,
+    alt4: string,
+    image5: string,
+    alt5: string,
+    image6: string,
+    alt6: string,
+    image7: string,
+    alt7: string,
+    image8: string,
+    alt8: string,
+    image9: string,
+    alt9: string,
+}
+
+const ProductForm = ({categories, product} : AddFormProps) => {
     const router = useRouter();
-    const thumbImg = product?.thumbImage
-    const productImgs = productImages?.map(img => img.image) || []
-    const imgArr = thumbImg ? [thumbImg,...productImgs] : []
+    // const thumbImg = product?.thumbImage
+    // const productImgs = product?.map(img => img.image) || []
+    // const imgArr = thumbImg ? [thumbImg,...productImgs] : []
 
     const initialValues = {
         title: "",
         categoryId: categories[0].id,
-        // description: "",
-        // manufacturer: "",
-        // documents: [{documentTitle: "", documentLink: ""},{documentTitle: "", documentLink: ""}],
-        // advantages: [{title: "", advantage: ""},{title: "", advantage: ""},{title: "", advantage: ""}]
+        description: "",
+        thumbImage: "",
+        manufacturer: "",
+        image1: "",
+        alt1: "",
+        image2: "",
+        alt2: "",
+        image3: "",
+        alt3: "",
+        image4: "",
+        alt4: "",
+        image5: "",
+        alt5: "",
+        image6: "",
+        alt6: "",
+        image7: "",
+        alt7: "",
+        image8: "",
+        alt8: "",
+        image9: "",
+        alt9: "",
+        advantage1: "",
+        advantage2: "",
+        advantage3: "",
+        advantage4: "",
+        advantage5: "",
+        advantage6: "",
+        documentTitle1: "",
+        documentLink1: "",
+        documentTitle2: "",
+        documentLink2: "",
+        documentTitle3: "",
+        documentLink3: "",
+        useGuideVideoTitle: "",
+        useGuideVideoLink: "",
+        useGuideDocumentTitle: "",
+        useGuideDocumentLink: "",
+        ask1: "",
+        answer1: "",
+        ask2: "",
+        answer2: "",
+        ask3: "",
+        answer3: "",
+        ask4: "",
+        answer4: "",
+        ask5: "",
+        answer5: "",
+        ask6: "",
+        answer6: "",
+        ask7: "",
+        answer7: "",
+        ask8: "",
+        answer8: "",
+        ask9: "",
+        answer9: "",
     }
 
-    console.log({thumbImg})
-    console.log({productImgs})
-    console.log({imgArr})
-    const [productDocumentNumber, setProductDocumentNumber] = useState(2)
-    const [images, setImages] = useState<string[]>(imgArr as string[])
+    console.log({product})
+    console.log({initialValues})
+
+    const [images, setImages] = useState<TImages>({} as TImages)
     const form = useForm<TProductSchema>({
         resolver: zodResolver(ProductSchema),
-        // defaultValues: product ?? initialValues
+        // defaultValues: product ?? initialValues,
     });
 
     const onSubmit = useCallback(async(values: TProductSchema) => {
@@ -55,14 +126,7 @@ const ProductForm = ({categories, product, productImages} : AddFormProps) => {
         try{
             const payload = {
                 ...values,
-            }
-            if(images.length > 0){
-                if(images.length === 1){
-                    payload.thumbImage = images[0]
-                }else{
-                    payload.thumbImage = images[0];
-                    payload.images = images.slice(1).map(img => ({image: img}))
-                }
+                ...images
             }
             console.log({payload})
             product ? await fetch('/api/dashboard/products/' + product.id, {method: "PATCH",body: JSON.stringify(payload)}) : await fetch('/api/dashboard/products', {method: "POST", body: JSON.stringify(payload)});
@@ -106,7 +170,7 @@ const ProductForm = ({categories, product, productImages} : AddFormProps) => {
                                                         <FormItem>
                                                             <FormLabel>Tên sản phẩm</FormLabel>
                                                             <FormControl>
-                                                                <Input placeholder="VD: Absorpole" className="w-full" {...field}/>
+                                                                <Input placeholder="" className="w-full" {...field}/>
                                                             </FormControl>
                                                             <FormMessage />
                                                         </FormItem>)}
@@ -117,7 +181,7 @@ const ProductForm = ({categories, product, productImages} : AddFormProps) => {
                                                         <FormItem>
                                                             <FormLabel>Hãng sản xuất</FormLabel>
                                                             <FormControl>
-                                                                <Input placeholder="VD: Absortech" className="w-full" {...field}/>
+                                                                <Input placeholder="" className="w-full" {...field}/>
                                                             </FormControl>
                                                             <FormMessage />
                                                         </FormItem>)}
@@ -170,36 +234,51 @@ const ProductForm = ({categories, product, productImages} : AddFormProps) => {
                                         </CardHeader>
                                         <CardContent>
                                             <div className="grid gap-6">
-                                                {Array.from({length: 3}, (_,index) =>
-                                                    <div key={index} className="grid gap-3">
-                                                        <h3 className="font-bold">Ưu điểm {index+1}</h3>
-                                                        <FormField control={form.control}
-                                                             name={`advantages.${index}.title`}
-                                                             render={({field}) => (
-                                                                 <FormItem>
-                                                                     <FormControl>
-                                                                          <Input
-                                                                               placeholder="Tiêu đề"
-                                                                               className="w-full" {...field}
-                                                                          />
-                                                                     </FormControl>
-                                                                     <FormMessage />
-                                                                 </FormItem>
-                                                             )}
-                                                        />
-                                                        <FormField control={form.control}
-                                                             name={`advantages.${index}.advantage`}
-                                                             render={({field}) => (
-                                                                  <FormItem>
+                                                <div className="grid gap-3">
+                                                    <h3 className="font-bold">Ưu điểm 1</h3>
+                                                    <FormField control={form.control}
+                                                               name='advantage1'
+                                                               render={({field}) => (
+                                                                   <FormItem>
                                                                        <FormControl>
-                                                                           <Textarea placeholder="Nội dung" className="min-h-16" {...field}/>
+                                                                           <Textarea placeholder=""
+                                                                                     className="min-h-16" {...field}/>
                                                                        </FormControl>
-                                                                      <FormMessage />
-                                                                  </FormItem>
-                                                             )}
-                                                        />
-                                                    </div>
-                                                )}
+                                                                       <FormMessage/>
+                                                                   </FormItem>
+                                                               )}
+                                                    />
+                                                </div>
+                                                <div className="grid gap-3">
+                                                    <h3 className="font-bold">Ưu điểm 2</h3>
+                                                    <FormField control={form.control}
+                                                               name='advantage2'
+                                                               render={({field}) => (
+                                                                   <FormItem>
+                                                                       <FormControl>
+                                                                           <Textarea placeholder=""
+                                                                                     className="min-h-16" {...field}/>
+                                                                       </FormControl>
+                                                                       <FormMessage/>
+                                                                   </FormItem>
+                                                               )}
+                                                    />
+                                                </div>
+                                                <div className="grid gap-3">
+                                                    <h3 className="font-bold">Ưu điểm 3</h3>
+                                                    <FormField control={form.control}
+                                                               name='advantage3'
+                                                               render={({field}) => (
+                                                                   <FormItem>
+                                                                       <FormControl>
+                                                                           <Textarea placeholder=""
+                                                                                     className="min-h-16" {...field}/>
+                                                                       </FormControl>
+                                                                       <FormMessage/>
+                                                                   </FormItem>
+                                                               )}
+                                                    />
+                                                </div>
                                             </div>
                                         </CardContent>
                                     </Card>
@@ -237,39 +316,70 @@ const ProductForm = ({categories, product, productImages} : AddFormProps) => {
                                         </CardHeader>
                                         <CardContent>
                                             <div className='grid gap-4'>
-                                                {Array.from({length: productDocumentNumber}, (_,index) =>
-                                                    <div key={index} className='grid gap-3'>
+                                                <div className='grid gap-3'>
                                                     <FormField control={form.control}
-                                                               name={`documents.${index}.documentTitle`}
+                                                               name='documentTitle1'
                                                                render={({field}) => (
                                                                    <FormItem>
-                                                                       <FormLabel>Tiêu đề tài liệu</FormLabel>
+                                                                       <FormLabel>Tiêu đề tài liệu 1</FormLabel>
                                                                        <FormControl>
                                                                            <Input
                                                                                placeholder=""
                                                                                className="w-full" {...field}
                                                                            />
                                                                        </FormControl>
-                                                                       <FormMessage />
+                                                                       <FormMessage/>
                                                                    </FormItem>
                                                                )}
                                                     />
                                                     <FormField control={form.control}
-                                                               name={`documents.${index}.documentLink`}
+                                                               name='documentLink1'
                                                                render={({field}) => (
                                                                    <FormItem>
-                                                                       <FormLabel>Đường dẫn tài liệu</FormLabel>
+                                                                       <FormLabel>Đường dẫn tài liệu 1</FormLabel>
                                                                        <FormControl>
                                                                            <Input
                                                                                placeholder=""
                                                                                className="w-full" {...field}
                                                                            />
                                                                        </FormControl>
-                                                                       <FormMessage />
+                                                                       <FormMessage/>
                                                                    </FormItem>
                                                                )}
                                                     />
-                                                </div>)}
+                                                </div>
+                                                <div className='grid gap-3'>
+                                                    <FormField control={form.control}
+                                                               name='documentTitle2'
+                                                               render={({field}) => (
+                                                                   <FormItem>
+                                                                       <FormLabel>Tiêu đề tài liệu 2</FormLabel>
+                                                                       <FormControl>
+                                                                           <Input
+                                                                               placeholder=""
+                                                                               className="w-full" {...field}
+                                                                           />
+                                                                       </FormControl>
+                                                                       <FormMessage/>
+                                                                   </FormItem>
+                                                               )}
+                                                    />
+                                                    <FormField control={form.control}
+                                                               name='documentLink2'
+                                                               render={({field}) => (
+                                                                   <FormItem>
+                                                                       <FormLabel>Đường dẫn tài liệu 2</FormLabel>
+                                                                       <FormControl>
+                                                                           <Input
+                                                                               placeholder=""
+                                                                               className="w-full" {...field}
+                                                                           />
+                                                                       </FormControl>
+                                                                       <FormMessage/>
+                                                                   </FormItem>
+                                                               )}
+                                                    />
+                                                </div>
                                             </div>
                                         </CardContent>
                                     </Card>

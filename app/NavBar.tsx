@@ -21,7 +21,7 @@ export async function NavBar() {
     const categories = await prisma.category.findMany();
     const products = await prisma.product.findMany();
 
-    const productMap: { [key: number]: ProductItem[] } = {};
+    const productMap: { [key: string]: ProductItem[] } = {};
 
     products.forEach(product => {
         const productItem: ProductItem = {

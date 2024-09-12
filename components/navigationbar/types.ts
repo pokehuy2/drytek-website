@@ -1,10 +1,10 @@
 export type ProductItem = {
-    productId: number;
+    productId: string;
     productName: string;
 }
 
 export type CategoryItem = {
-    categoryId: number;
+    categoryId: string;
     categoryName: string;
     children?: ProductItem[];
 }
