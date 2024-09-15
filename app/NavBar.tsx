@@ -13,13 +13,11 @@ import {
 import ProductNavBarItems from "@/components/navigationbar/ProductNavBarItems";
 import SearchSectionButton from "@/components/navigationbar/SearchSectionButton";
 import NavBarSheet from "@/components/navigationbar/NavBarSheet";
-import prisma from "@/prisma/client";
 import {CategoryItem, ProductItem} from "@/components/navigationbar/types";
+import {categories} from "@/app/data/categories";
+import {products} from "@/app/data/products";
 
 export async function NavBar() {
-
-    const categories = await prisma.category.findMany();
-    const products = await prisma.product.findMany();
 
     const productMap: { [key: string]: ProductItem[] } = {};
 

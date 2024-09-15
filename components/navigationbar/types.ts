@@ -4,7 +4,7 @@ export type ProductItem = {
 }
 
 export type CategoryItem = {
-    categoryId: string;
+    categoryId: number;
     categoryName: string;
     children?: ProductItem[];
 }
