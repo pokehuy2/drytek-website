@@ -6,6 +6,11 @@ export const products = [{
     {
         id: 'product-2',
         title: 'Product 2',
+        categoryId: 1
+    },
+    {
+        id: 'product-3',
+        title: 'Product 3',
         categoryId: 2
     }
 ]
