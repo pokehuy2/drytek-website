@@ -10,12 +10,12 @@ const imageLinks = [
 const MainIntro = () => {
     return (
         <section>
-            <div className={"w-full md:h-[650px] h-[450px] bg-cover bg-[url('/images/absortech_industries_agriculture.jpg')]"}>
-                <div className="max-w-[1440px] mx-auto md:pt-80 pt-[268px]">
+            <div className={"w-full md:h-[350px] h-[450px] bg-cover bg-center bg-[url('/images/Banner.jpeg')]"}>
+                <div className="max-w-[1440px] mx-auto md:pt-24 pt-[268px]">
                     <div
-                        className="md:rounded-3xl rounded-md md:skew-y-12 md:w-[55.5%] skew-y-6 justify-between md:p-12 p-5 text-white bg-gradient-to-r from-cyan-500 to-blue-500 -z-20">
+                        className="md:rounded-3xl rounded-md md:skew-y-12 md:w-[45.5%] skew-y-6 justify-between md:p-12 p-5 text-white bg-gradient-to-r from-cyan-500 to-blue-500 -z-20">
                         <div className="flex flex-col gap-y-6 md:-skew-y-12 -skew-y-6">
-                            <div className='md:text-[60px] text-lg text-white'><h1 className="leading-tight font-bold">
+                            <div className='md:text-[40px] text-lg text-white'><h1 className="leading-tight font-bold">
                                 Giải pháp chống ẩm<br/>cho hàng hoá toàn diện
                             </h1></div>
                             <p className="max-[768px]:text-[12px] font-bold">Sản phẩm chống ẩm cho các ngành công nghiệp, nông nghiệp và thực phẩm</p>

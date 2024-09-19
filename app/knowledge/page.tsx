@@ -100,59 +100,60 @@ const KnowledgePage = () => {
             </Breadcrumb>
 
             <div className="grid md:grid-cols-[2fr_1fr] my-5 max-[768px]:grid-cols-1">
-                <div>
+                {/*<div>*/}
                     <div className="inline-block">
-                        <h2>MỚI NHẤT</h2>
-                        <div className="h-1 bg-black"></div>
+                        {/*<h2>MỚI NHẤT</h2>*/}
+                        {/*<div className="h-1 bg-black"></div>*/}
                     </div>
-                    <BlogMainArticle id={mockArticles[1].id} imageLink={mockArticles[1].imageLink}
-                                     article={mockArticles[1].article} date={mockArticles[1].date}
-                                     description={mockArticles[1].description} author={mockArticles[1].author}/>
-                    <div className="inline-block my-3">
-                        <h3>Mẹo vặt</h3>
-                        <div className="h-1 bg-black"></div>
-                    </div>
-                    <BlogSecondaryArticle id={mockArticles[2].id} imageLink={mockArticles[2].imageLink}
-                                          article={mockArticles[2].article} date={mockArticles[2].date}
-                                          description={mockArticles[2].description}
-                                          author={mockArticles[2].author}/>
-                    <BlogSecondaryArticle id={mockArticles[5].id} imageLink={mockArticles[5].imageLink}
-                                          article={mockArticles[5].article} date={mockArticles[5].date}
-                                          description={mockArticles[5].description}
-                                          author={mockArticles[5].author}/>
-                    <BlogSecondaryArticle id={mockArticles[6].id} imageLink={mockArticles[6].imageLink}
-                                          article={mockArticles[6].article} date={mockArticles[6].date}
-                                          description={mockArticles[6].description}
-                                          author={mockArticles[6].author}/>
-                    <div className="inline-block my-3">
-                        <h3>Kinh nghiệm</h3>
-                        <div className="h-1 bg-black"></div>
-                    </div>
-                    <BlogSecondaryArticle id={mockArticles[7].id} imageLink={mockArticles[7].imageLink}
-                                          article={mockArticles[7].article} date={mockArticles[7].date}
-                                          description={mockArticles[7].description}
-                                          author={mockArticles[7].author}/>
-                    <BlogSecondaryArticle id={mockArticles[8].id} imageLink={mockArticles[8].imageLink}
-                                          article={mockArticles[8].article} date={mockArticles[8].date}
-                                          description={mockArticles[8].description}
-                                          author={mockArticles[8].author}/>
-                </div>
+                    <div className="italic">Hiện chưa có bài viết nào. Vui lòng quay lại sau.</div>
+                    {/*<BlogMainArticle id={mockArticles[1].id} imageLink={mockArticles[1].imageLink}*/}
+                    {/*                 article={mockArticles[1].article} date={mockArticles[1].date}*/}
+                    {/*                 description={mockArticles[1].description} author={mockArticles[1].author}/>*/}
+                {/*    <div className="inline-block my-3">*/}
+                {/*        <h3>Mẹo vặt</h3>*/}
+                {/*        <div className="h-1 bg-black"></div>*/}
+                {/*    </div>*/}
+                {/*    <BlogSecondaryArticle id={mockArticles[2].id} imageLink={mockArticles[2].imageLink}*/}
+                {/*                          article={mockArticles[2].article} date={mockArticles[2].date}*/}
+                {/*                          description={mockArticles[2].description}*/}
+                {/*                          author={mockArticles[2].author}/>*/}
+                {/*    <BlogSecondaryArticle id={mockArticles[5].id} imageLink={mockArticles[5].imageLink}*/}
+                {/*                          article={mockArticles[5].article} date={mockArticles[5].date}*/}
+                {/*                          description={mockArticles[5].description}*/}
+                {/*                          author={mockArticles[5].author}/>*/}
+                {/*    <BlogSecondaryArticle id={mockArticles[6].id} imageLink={mockArticles[6].imageLink}*/}
+                {/*                          article={mockArticles[6].article} date={mockArticles[6].date}*/}
+                {/*                          description={mockArticles[6].description}*/}
+                {/*                          author={mockArticles[6].author}/>*/}
+                {/*    <div className="inline-block my-3">*/}
+                {/*        <h3>Kinh nghiệm</h3>*/}
+                {/*        <div className="h-1 bg-black"></div>*/}
+                {/*    </div>*/}
+                {/*    <BlogSecondaryArticle id={mockArticles[7].id} imageLink={mockArticles[7].imageLink}*/}
+                {/*                          article={mockArticles[7].article} date={mockArticles[7].date}*/}
+                {/*                          description={mockArticles[7].description}*/}
+                {/*                          author={mockArticles[7].author}/>*/}
+                {/*    <BlogSecondaryArticle id={mockArticles[8].id} imageLink={mockArticles[8].imageLink}*/}
+                {/*                          article={mockArticles[8].article} date={mockArticles[8].date}*/}
+                {/*                          description={mockArticles[8].description}*/}
+                {/*                          author={mockArticles[8].author}/>*/}
+                {/*</div>*/}
 
-                <div>
-                    <div className="inline-block max-[768px]:py-3">
-                        <h3>Bài viết nổi bật</h3>
-                        <div className="h-1 bg-black"></div>
-                    </div>
-                    <BlogSmallArticle id={mockArticles[0].id} imageLink={mockArticles[0].imageLink}
-                                      article={mockArticles[0].article} date={mockArticles[0].date}
-                                      description={mockArticles[0].description} author={mockArticles[0].author}/>
-                    <BlogSmallArticle id={mockArticles[3].id} imageLink={mockArticles[3].imageLink}
-                                      article={mockArticles[3].article} date={mockArticles[3].date}
-                                      description={mockArticles[3].description} author={mockArticles[3].author}/>
-                    <BlogSmallArticle id={mockArticles[4].id} imageLink={mockArticles[4].imageLink}
-                                      article={mockArticles[4].article} date={mockArticles[4].date}
-                                      description={mockArticles[4].description} author={mockArticles[4].author}/>
-                </div>
+                {/*<div>*/}
+                {/*    <div className="inline-block max-[768px]:py-3">*/}
+                {/*        <h3>Bài viết nổi bật</h3>*/}
+                {/*        <div className="h-1 bg-black"></div>*/}
+                {/*    </div>*/}
+                {/*    <BlogSmallArticle id={mockArticles[0].id} imageLink={mockArticles[0].imageLink}*/}
+                {/*                      article={mockArticles[0].article} date={mockArticles[0].date}*/}
+                {/*                      description={mockArticles[0].description} author={mockArticles[0].author}/>*/}
+                {/*    <BlogSmallArticle id={mockArticles[3].id} imageLink={mockArticles[3].imageLink}*/}
+                {/*                      article={mockArticles[3].article} date={mockArticles[3].date}*/}
+                {/*                      description={mockArticles[3].description} author={mockArticles[3].author}/>*/}
+                {/*    <BlogSmallArticle id={mockArticles[4].id} imageLink={mockArticles[4].imageLink}*/}
+                {/*                      article={mockArticles[4].article} date={mockArticles[4].date}*/}
+                {/*                      description={mockArticles[4].description} author={mockArticles[4].author}/>*/}
+                {/*</div>*/}
             </div>
         </div>
     )

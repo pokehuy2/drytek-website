@@ -69,7 +69,7 @@ export async function NavBar() {
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Sản phẩm</NavigationMenuTrigger>
                             <NavigationMenuContent>
-                                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[550px] lg:grid-cols-[143px_191px_191px_191px] overflow-x-scroll">
+                                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[850px] lg:grid-cols-[143px_191px_191px_110px_110px] overflow-x-scroll">
                                     <li className="row-span-3">
                                         <NavigationMenuLink asChild>
                                             <a
